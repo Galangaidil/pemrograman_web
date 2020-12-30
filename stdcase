@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- JQuery menggunakan CDN-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Case</title>
+
+    <script>
+        //memastikan kode javascript baru akan di proses setelah tag html selesai di proses.
+        $(document).ready(function(){
+            //event pada tombol ambil nilai
+            $("#tombol").click(function(){
+                //mendeklarasikan array kosong
+                var hobby = [];
+                //mengambil nilai dari checkbox yang di klik
+                $(':checkbox:checked').each(function(i){
+                    //memasukkan nilai dari checkbox ke array hobby
+                    hobby[i] = $(this).val();
+            });
+                //mengambil nilai dari dropdown
+                var agama = $('#agama option:selected').val();
+                //mengambil nilai dari wadah
+                var wadah = $('#wadah');
+                //menampilkan nilai dari hobby ke dalam wadah
+                wadah.append('Hobby : ' + hobby.toString());
+                //menampilkan nilai dari agama ke dalam wadah
+                wadah.append('<br> Agama : ' + agama);
+        });
+    });
+    </script>
+</head>
+<body>
+    <form action="">
+        <label for="hobby">Hobby</label><br>
+        <input type="checkbox" name="hobby" id="hobby" value="coding">
+        <label for="hobby">Coding</label>
+        <input type="checkbox" name="hobby" id="hobby1" value="Desain">
+        <label for="hobby1">Desain</label>
+        <input type="checkbox" name="hobby" id="hobby2" value="Menulis">
+        <label for="hobby2">Menulis</label>
+
+        <br><br>
+        <label for="agama">Agama</label><br>
+        <select name="agama" id="agama">
+                        <option value="islam" selected>Islam</option>
+                        <option value="kristen">Kristen</option>
+                        <option value="hindu">Hindu</option>
+                        <option value="Budha">Budha</option>
+        </select>
+    </form>
+    <br>
+    <button id="tombol">Ambil nilai</button>
+
+    <p id="wadah"></p>
+</body>
+</html>
